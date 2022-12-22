@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> getInformation() async {
     isLoading=true;
     setState(() {});
-    final url=Uri.parse('http://universities.hipolabs.com/search?country=Uzbekistan');
+    final url=Uri.parse('http://universities.hipolabs.com/search?country=Canada');
     final res=await http.get(url);
     data=jsonDecode(res.body);
     isLoading=false;
