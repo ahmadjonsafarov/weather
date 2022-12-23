@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           itemBuilder: (context,index){
           return Container(
             margin: EdgeInsets.only(top: 16),
-            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.blue
@@ -75,4 +75,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
