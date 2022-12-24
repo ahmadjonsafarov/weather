@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart' as url_louncher;
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:weather/model/university_model.dart';
 import 'package:weather/page/add_country.dart';
+import 'package:weather/repository/getinforepository.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -16,23 +17,18 @@ class HomePage extends StatefulWidget {
 }
 bool isLoading=true;
 class _HomePageState extends State<HomePage> {
+  GetInfoRepository api=GetInfoRepository();
   List<Universiyt> listOfUniversity=[];
-  Future<void> getInformation() async {
-    try{
+  Future<dynamic> getInformation() async {
+
       isLoading = true;
       setState(() {});
-      final url = Uri.parse(
-          'http://universities.hipolabs.com/search?country=${widget.country}');
-      final res = await http.get(url);
-      dynamic data = jsonDecode(res.body);
+      dynamic data = await api.Getinformation(name: widget.country);
       data.forEach((element) {
         listOfUniversity.add(Universiyt.fromJson(element));
       });
       isLoading = false;
       setState(() {});
-    }catch(e){
-      print(e);
-    }
   }
   @override
   void initState() {
